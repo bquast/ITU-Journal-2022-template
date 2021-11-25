@@ -1,5 +1,6 @@
 \documentclass[10pt,a4paper,twocolumn]{article}
 \usepackage[backend=biber,natbib=true,style=numeric,maxnames=50,sorting=none]{biblatex}
+\usepackage{authblk}
 \usepackage{fancyhdr}
 % the below lines starting with pdf are probably not needed, since overwritten when making the final PDF
 \usepackage[pdfauthor={Bastiaan Quast},
@@ -18,7 +19,13 @@
 \addbibresource{bibliography-file.bib}
 
 \title{Some article}
-\author{Bastiaan Quast}
+\author[1]{Erica}
+\author[2]{Thomas}
+\author[2]{Eva}
+\author[1]{Bastiaan}
+
+\affil[1]{ITU}
+\affil[2]{Fraunhofer HHI}
 
 \begin{document}
 
