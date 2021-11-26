@@ -1,55 +1,69 @@
 \documentclass[10pt,a4paper,twocolumn]{article}
 \usepackage[backend=biber,natbib=true,style=numeric,maxnames=50,sorting=none]{biblatex}
 \usepackage{amsmath}
-\usepackage{tikz}
 \usepackage{float}
-\usepackage{subcaption}
-\usepackage{wrapfig}
 \usepackage{authblk}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
-% the below lines starting with pdf are probably not needed, since overwritten when making the final PDF
-\usepackage[pdfauthor={Tolga Girici},
+\usepackage[pdfauthor={Tolga Girici and Ahmet Cihat Kazez},
 			pdftitle={Clustering-Based Device-to-Device Discovery and Content Delivery in Wireless Networks},
 			pdfsubject={The subject is not clear},
-			pdfkeywords={no idea, who is who, that is what},
+			pdfkeywords={Advertisement, caching, content delivery, device‑to‑device communication, discovery, offloading},
 			pdfproducer={International Telecommunication Union},
 			hidelinks]{hyperref}
 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{{\footnotesize ITU Journal on Future and Evolving Technologies, Volume 2 (2021), Issue 2, 31 May 2021}}
+\lfoot{© 2021 International Telecommunication Union}
+\rfoot{\thepage}
+
+% Keywords command
+\providecommand{\keywords}[1]
+{	
+	\textbf{\textit{Keywords---}} #1
+}
+
+\date{}
+
+%%%%% begin editing here %%%%%
+
+% article specific packages
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{snakes}
 \usetikzlibrary{calc,patterns}
 
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{ITU Journal, Volume, (year), Issue}
-\lfoot{© 2021 International Telecommunication Union}
-\rfoot{\thepage}
-
-\addbibresource{bibliography-file.bib}
+% article bibliography file
 \addbibresource{ituJournalPaper.bib}
 
+% title
 \title{Clustering-Based Device-to-Device Discovery and Content Delivery in Wireless Networks}
+
+% authors
 \author[1,*]{Tolga Girici}
 \author[1]{Ahmet Cihat Kazez}
 
+% affiliations and corresponding author
 \affil[1]{Electrical and Electronics Engineering, TOBB University of Economics and Technology, Ankara, Turkey}
 \affil[*]{\small Corresponding author: Tolga Girici, tgirici@etu.edu.tr}
 
-% \date{\vspace{-12pt}{\small NOTE: Corresponding author: Tolga Girici, tgirici@etu.edu.tr}}
-\date{}
+\def\abstract{\itshape}
 
 \begin{document}
 
 \twocolumn[
 \begin{@twocolumnfalse}
 	\maketitle
-	\hrulefill
+	\hrulefill \\
+	\textit{\textbf{Abstract}---}
 	\begin{abstract}
-		\noindent
-		\textit{Device-to-device (D2D) cache placement and content delivery is a recent technology that exploits idle memory capacity of mobile devices and promises to fulfill users' content needs with very low delay and without using the scarce cellular network capacity. Recent literature on D2D caching mostly concentrated on optimal cache placement and mostly disregarded the required discovery mechanisms and the accompanying overhead. In this work we propose a clustering-based procedure that is used to cache content at the helper nodes along with advertisement and discovery procedures for content delivery. We implement a Long Term Evolution (LTE)-based simulation setup to evaluate the proposed schemes. Numerical results reveal that the clustering-based user and content discovery significantly improves cellular offloading and reduces the discovery overhead with a minimal sacrifice from delay.
-		}
+		Device-to-device (D2D) cache placement and content delivery is a recent technology that exploits idle memory capacity of mobile devices and promises to fulfill users' content needs with very low delay and without using the scarce cellular network capacity. Recent literature on D2D caching mostly concentrated on optimal cache placement and mostly disregarded the required discovery mechanisms and the accompanying overhead. In this work we propose a clustering-based procedure that is used to cache content at the helper nodes along with advertisement and discovery procedures for content delivery. We implement a Long Term Evolution (LTE)-based simulation setup to evaluate the proposed schemes. Numerical results reveal that the clustering-based user and content discovery significantly improves cellular offloading and reduces the discovery overhead with a minimal sacrifice from delay.
 	\end{abstract}
+	\bigskip
+	\keywords{Advertisement, caching, content delivery, device‑to‑device communication, discovery, offloading}
 	\bigskip
 	\end{@twocolumnfalse}
 ]
@@ -136,7 +150,11 @@ s.t.
 \end{equation}
 
 \begin{equation}
-	y_{huc} \leq a_{hu}x_{hc}, \forall u=1,\ldots,U, c=1,\ldots,C, h=1,\ldots,H \label{eq:neighbor}
+	\begin{aligned}
+		y_{huc} \leq a_{hu}x_{hc}, \forall u=1, &\ldots, U,\\
+		c=1,&\ldots,C,\\ 
+		h=1,&\ldots,H \label{eq:neighbor}
+	\end{aligned}
 \end{equation}
 
 The formulation described above maximizes offloading for a given (static) network topology and disregards mobility. Besides, it assumes perfect user/content discovery. For a mobile network, this optimization problem has to be solved periodically with sufficient frequency and it has a prohibitive complexity.
@@ -184,8 +202,7 @@ Resource allocation, in the time and frequency domain, has been managed by the c
 
 \begin{figure} [htb]
 	\centering
-	% \captionsetup{width=.96\linewidth}
-	\begin{tikzpicture}[thick,fill opacity=1,scale=0.68, every node/.style={scale=0.68}]
+	\begin{tikzpicture}[thick,fill opacity=1,scale=0.6, every node/.style={scale=0.68}]
 		
 		
 		\fill[green!20] (0.5,0) rectangle (11.5,1);
@@ -232,7 +249,7 @@ MP and RP are divided into 1ms length time slots as shown in Fig. \ref{TByapıs�
 In the case of multiple access attempts for an RB, interference at the receiver is inevitable. If the SINR value at the receiver does not exceed the required threshold for any user, the corresponding advertisement/discovery message cannot be successfully received. As an outcome, overlapped users encounter outage, are unable to create D2D links and cannot make a contribution to the offloading. On the other hand, if the SINR value meets the threshold for a user, the corresponding user occupies the RB during the entire AZ and gets a response in the same time slot and over the same RB during the following RP. The SINR threshold depends on the modulation and coding rate \cite{ChiumentoSINR}
 \begin{figure} [!htb]
 	\centering
-	\begin{tikzpicture}[thick,fill opacity=1,scale=0.68, every node/.style={scale=0.68}]
+	\begin{tikzpicture}[thick,fill opacity=1,scale=0.6, every node/.style={scale=0.68}]
 		
 		
 		
@@ -319,6 +336,7 @@ In the proposed network model, the discovery beacon of an OU might be received b
 In this section performance evaluation of proposed ABD2D and DBD2D procedures are presented. Number of required control messages for unit offloading and average amount of offloading (number of contents delivered using D2D transmissions) are considered as key performance metrics and investigated against a varying number of HUs, OUs, SINR threshold and allocated MP length for discovery and advertisement. Simulations are performed in MATLAB, for the parameters in Table \ref{table:simparameters}.
 
 \begin{table}[!htb]
+	\small
 	\centering
 	\caption{Simulation parameters}\label{table:simparameters}
 	\begin{tabular}{|c|c|}
