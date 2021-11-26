@@ -5,18 +5,31 @@
 \usepackage{authblk}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+
+%%%%% Customize the below fields %%%%%
 \usepackage[pdfauthor={Tolga Girici and Ahmet Cihat Kazez},
 			pdftitle={Clustering-Based Device-to-Device Discovery and Content Delivery in Wireless Networks},
 			pdfsubject={The subject is not clear},
 			pdfkeywords={Advertisement, caching, content delivery, device‑to‑device communication, discovery, offloading},
 			pdfproducer={International Telecommunication Union},
 			hidelinks]{hyperref}
-
+			
+%%%%% do not touch %%%%%
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{{\footnotesize ITU Journal on Future and Evolving Technologies, Volume 2 (2021), Issue 2, 31 May 2021}}
 \lfoot{© 2021 International Telecommunication Union}
 \rfoot{\thepage}
+\fancypagestyle{firstpage}{%
+	\renewcommand{\headrulewidth}{0pt}
+	\rhead{}
+	\lfoot{}
+	\rfoot{}
+	\cfoot{{\tiny © International Telecommunication Union, 2021 \\
+			Some rights reserved. This work is available under the CC BY-NC-ND 3.0 IGO license: \href{https://creativecommons.org/licenses/by-nc-nd/3.0/igo/}{https://creativecommons.org/licenses/by-nc-nd/3.0/igo/}\\
+			More information regarding the license and suggested citation, additional permissions and disclaimers is available at:
+			\href{https://www.itu.int/en/journal/j-fet/}{https://www.itu.int/en/journal/j-fet/}}}
+}
 
 % Keywords command
 \providecommand{\keywords}[1]
@@ -53,12 +66,12 @@
 \def\abstract{\itshape}
 
 \begin{document}
-
+\thispagestyle{firstpage}
 \twocolumn[
 \begin{@twocolumnfalse}
 	\maketitle
 	\hrulefill \\
-	\textit{\textbf{Abstract}---}
+	\textit{\textbf{Abstract}---} 
 	\begin{abstract}
 		Device-to-device (D2D) cache placement and content delivery is a recent technology that exploits idle memory capacity of mobile devices and promises to fulfill users' content needs with very low delay and without using the scarce cellular network capacity. Recent literature on D2D caching mostly concentrated on optimal cache placement and mostly disregarded the required discovery mechanisms and the accompanying overhead. In this work we propose a clustering-based procedure that is used to cache content at the helper nodes along with advertisement and discovery procedures for content delivery. We implement a Long Term Evolution (LTE)-based simulation setup to evaluate the proposed schemes. Numerical results reveal that the clustering-based user and content discovery significantly improves cellular offloading and reduces the discovery overhead with a minimal sacrifice from delay.
 	\end{abstract}
@@ -70,6 +83,7 @@
 
 \section{Introduction} 
 \label{sec:intro}
+\thispagestyle{firstpage}
 Recent technological improvements have triggered the widespread use of connected devices and caused a dramatic increase in mobile data demand. While meeting this demand service providers must also fulfill users' essential Quality of Service (QoS) requirements such as high data rate and low latency. This exigency is conducive to the birth of new technologies in next generation communication systems, particularly for 5G and beyond. Device-to-device (D2D) communication is one of these technologies which enables direct communication of nearby users without any Base Station (BS) assistance and alleviates load on the Radio Access Network (RAN) and core network. Benefits of D2D may be listed as high spectral efficiency, reduced latency, extended capacity, and improved power efficiency \cite{5GBookAfif}. D2D communication may utilize licensed (in-band) and unlicensed (out-band) spectrum as well. In-band D2D communication has been defined in the 3rd Generation Partnership Project (3GPP) Release 12 and adopted to existing Long Term Evolution (LTE) technology with the name LTE Direct. In the scope of 3GPP Rel. 12 network architecture, discovery procedures, synchronization, authorization, and group operations are standardized \cite{3gpp.23.303}.
 
 Today, as an add-on technology LTE Direct is not prevalent and has limited usage in public services such as health care and security applications. On the other hand, for 5G, D2D communication is one of the innate technologies and leads to several proximity-based services, such as social networking, emergency communication, Internet of Things (IoT) enhancement, commercial and media services \cite{wuwhitepaper}. Cache placement and content delivery are considered vital applications of D2D communication \cite{chiasserini2015content}. Since D2D technology is device-centric and data transmission is exempt from RAN and core network traffic, requested content must be cached by the edge devices beforehand and delivered upon request \cite{Bastug2014LivingontheEdge}.
